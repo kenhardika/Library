@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+.container {
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+    background-color: blanchedalmond;
+
+    grid-template-columns: repeat(5, 20vw);
+    grid-template-rows: 25vh 35vh 35vh 5vh;
+}
+
+.header {
+    grid-column: 1/6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
+    grid-column: 1/6;
+    grid-row: 2/4;
+    display: grid;
+    grid-template-columns: repeat(2, 50vw); 
+}
+
+.leftContent, .rightContent {
+    display: flex;
+    flex-direction: column;
+}
+
+.cardsCaption, .formsCaption {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cardsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(10vw, 1fr));
+    grid-auto-rows: 20vh;
+    gap: 15px;
+    padding: 10px;
+}
+
+.cards{
+    background-color: wheat ;
+}
+
+.forms {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-rows: repeat(6, 4vh);
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 20vw;
+}
+
+.footer {
+    grid-column: 1/6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
