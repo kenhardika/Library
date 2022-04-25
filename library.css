@@ -64,7 +64,7 @@ form {
     width: 20vw;
 }
 
-.footer {
+.footer {   
     grid-column: 1/6;
     display: flex;
     align-items: center;
