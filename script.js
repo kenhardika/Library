@@ -5,9 +5,10 @@ let authorInput = document.getElementById('author');
 let pagesInput = document.getElementById('pages');
 let checkbox = document.getElementById('read');
 let avail = document.getElementsByName('availability');
-const submitButton = document.getElementById('submitButton');
+const cardsContainer = document.querySelector('.cardsContainer');
  
 let myLibrary = [];
+let myCards = [];
 
 //Main Object Constructor 
 function book(title, author, pages, avail, read) {
@@ -37,13 +38,13 @@ function addToLib(...args) {
 }
 
 //submit button actions
-submitButton.addEventListener('click', submitNewBook);
 function submitNewBook() {
     addToLib(titleInput.value, authorInput.value, pagesInput.value, addAvail(), addRead());
     titleInput.value = "";
     authorInput.value = "";
     pagesInput.value = "";
 
+    showToCards()
     // if (addRead() === "read") {
     //     addBookToLibrary.read();
     // }
@@ -78,3 +79,19 @@ function addRead() {
 //         }
 //     }
 // }
+
+function showToCards() {
+    myLibrary.reverse();
+
+    appendToCard();
+    myCards.push(myLibrary[0]);
+    // console.table(myLibrary[0]);
+    myLibrary.reverse();
+}
+
+function appendToCard(){
+    let div = document.createElement('div');
+    div.className = "cards";
+    div.append(myLibrary[0].title);
+    cardsContainer.append(div);
+}

@@ -40,13 +40,16 @@
 
 .cardsContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10vw, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(8vw, 10vw));
     grid-auto-rows: 20vh;
+    align-items: center;
+    justify-content: flex-start;
     gap: 15px;
     padding: 10px;
 }
 
 .cards{
+    height: 20vh;
     background-color: wheat ;
 } 
 
@@ -78,10 +81,6 @@ input#pages, input#author, input#title {
     align-items: center;
     justify-content: center;
 }
-button#submit {
-    width: 5vw;
-}
-
 .footer {   
     grid-column: 1/6;
     display: flex;

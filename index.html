@@ -23,13 +23,6 @@
                 <h3> Library Archive </h3>
             </div>          
             <div class="cardsContainer">
-                <div class="cards">This is a Card</div>
-                <div class="cards">This is a Card</div>
-                <div class="cards">This is a Card</div>
-                <div class="cards">This is a Card</div>
-                <div class="cards">This is a Card</div>
-                <div class="cards">This is a Card</div>
-                <div class="cards">This is a Card</div>
             </div> 
         </div>
 
@@ -48,22 +41,22 @@
                     </div>
                     <div class="formPages">
                         <label for="pages"> Pages:  </label>
-                        <input type="text" name="pages" id="pages" pattern="[0-9]" minlength="1">    
+                        <input type="text" name="pages" id="pages">    
                     </div>
                     <div class="formRead">
                         <label for="read"> Did you read it yet?  </label>
-                        <input type="checkbox" for="read" value = true id="read" checked>
+                        <input type="checkbox" for="read" value = true id="read">
                         <label for="read"> Already read </label>
                     </div>  
                     <div class="formAvail">
                         <label for="author"> Is it Available?  </label>
                         <input type="radio" for="avail" value="available" name="availability" checked>
                         <label for="avail"> Yes </label>
-                        <input type="radio" for="notAvail" value="not available" name="availability">
-                        <label for="notAvail"> No </label>    
+                        <input type="radio" for="avail" value="not available" name="availability">
+                        <label for="avail"> No </label>    
                     </div>
                     <div class="buttonSubmit">
-                        <button id="submitButton"> Submit </button>
+                        <input type="button" id="submitButton" onclick="submitNewBook()" value="Submit"> 
                     </div>
                 </form>
         </div>
