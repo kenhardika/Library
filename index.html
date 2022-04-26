@@ -37,39 +37,36 @@
             <div class="formsCaption">
                 <h3>Add New Books to Library</h3>
             </div>
-            <div class="forms"> 
-                <form action="#" method="post">
-                    <label for="title"> Title :  </label>
-                    <input type="text" name="title" id="title">  
+                <form action="#"> 
+                    <div class="formTitle">
+                        <label for="title"> Title :  </label>
+                        <input type="text" name="title" id="title" >
+                    </div>  
+                    <div class="formAuthor">
+                        <label for="author"> Author: </label>
+                        <input type="text" name="author" id="author">
+                    </div>
+                    <div class="formPages">
+                        <label for="pages"> Pages:  </label>
+                        <input type="text" name="pages" id="pages" pattern="[0-9]" minlength="1">    
+                    </div>
+                    <div class="formRead">
+                        <label for="read"> Did you read it yet?  </label>
+                        <input type="checkbox" for="read" value = true id="read" checked>
+                        <label for="read"> Already read </label>
+                    </div>  
+                    <div class="formAvail">
+                        <label for="author"> Is it Available?  </label>
+                        <input type="radio" for="avail" value="available" name="availability" checked>
+                        <label for="avail"> Yes </label>
+                        <input type="radio" for="notAvail" value="not available" name="availability">
+                        <label for="notAvail"> No </label>    
+                    </div>
+                    <div class="buttonSubmit">
+                        <button id="submitButton"> Submit </button>
+                    </div>
                 </form>
-                <form action="#" method="post">
-                    <label for="author"> Author: </label>
-                    <input type="text" name="author" id="author">
-                </form>
-                <form action="#" method="post">
-                    <label for="pages"> Pages:  </label>
-                    <input type="text" name="pages" id="pages">
-                </form>
-                <form action="#" method="post">
-                    <label for="read"> Did you read it yet? :  </label>
-                    <input type="radio" for="Yes" value = true name="read" checked>
-                    <label for="Yes"> Yes </label>  
-                    <input type="radio" for="No" value = false name="read">
-                    <label for="No"> No </label>
-                </form>
-                <form action="#" method="post">
-                    <label for="author"> Availability:  </label>
-                    <input type="radio" for="avail" value="available" name="availability" checked>
-                    <label for="avail"> Available </label>
-                    <input type="radio" for="notAvail" value="not available" name="availability">
-                    <label for="notAvail"> Not Available </label>
-                </form>
-                <form action="#" >
-                    <button id="submit"> Submit </button>
-                </form>
-            </div>
         </div>
-
     </div>
     <div class="footer"> <p>This is the footer</p> </div>    
   </div>

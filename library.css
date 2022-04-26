@@ -48,20 +48,38 @@
 
 .cards{
     background-color: wheat ;
-}
+} 
 
-.forms {
+form {
     display: grid;
     align-items: center;
     justify-content: center;
     grid-template-rows: repeat(6, 4vh);
 }
 
-form {
+.formTitle, .formAuthor, .formPages{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 20vw;
+    width: 18vw;
+}
+
+.formRead, .formAvail {
+    display: flex;
+    gap: 1vw;
+    align-items: center;
+}
+
+input#pages, input#author, input#title {
+    width: 10vw;
+}
+.buttonSubmit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+button#submit {
+    width: 5vw;
 }
 
 .footer {   

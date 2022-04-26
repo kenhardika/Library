@@ -3,9 +3,9 @@ const userBtn = document.getElementById('user');
 let titleInput = document.getElementById('title');
 let authorInput = document.getElementById('author');
 let pagesInput = document.getElementById('pages');
-let read = document.getElementsByName('read');
+let checkbox = document.getElementById('read');
 let avail = document.getElementsByName('availability');
-const submitButton = document.getElementById('submit');
+const submitButton = document.getElementById('submitButton');
  
 let myLibrary = [];
 
@@ -61,10 +61,20 @@ function addAvail() {
     }
 }
 
+//add read with Checkbox
+
 function addRead() {
-    for (var i = 0, length = read.length; i < length; i++) {
-        if (read[i].checked) {
-          return read[i].value;
-        }
+    if(checkbox.checked) {
+        return true;
+    }
+    else{
+        return false;
     }
 }
+// function addRead() {
+//     for (var i = 0, length = read.length; i < length; i++) {
+//         if (read[i].checked) {
+//           return read[i].value;
+//         }
+//     }
+// }
