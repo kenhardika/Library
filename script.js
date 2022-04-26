@@ -19,7 +19,7 @@ function book(title, author, pages, avail, read) {
     this.read = read;
  };
 
-//Add Read in prototype for every book thats been added
+//Add Read status in prototype for every book thats been added
  addBookToLibrary.prototype.read = function() {
      this.read = true;
  }
@@ -40,18 +40,13 @@ function addToLib(...args) {
 //submit button actions
 function submitNewBook() {
     addToLib(titleInput.value, authorInput.value, pagesInput.value, addAvail(), addRead());
+    
+    //clear the input
     titleInput.value = "";
     authorInput.value = "";
     pagesInput.value = "";
 
     showToCards()
-    // if (addRead() === "read") {
-    //     addBookToLibrary.read();
-    // }
-    // else {
-    //     addBookToLibrary.notRead();
-    // }
-
 }
 
 function addAvail() {
@@ -63,7 +58,6 @@ function addAvail() {
 }
 
 //add read with Checkbox
-
 function addRead() {
     if(checkbox.checked) {
         return true;
@@ -72,13 +66,6 @@ function addRead() {
         return false;
     }
 }
-// function addRead() {
-//     for (var i = 0, length = read.length; i < length; i++) {
-//         if (read[i].checked) {
-//           return read[i].value;
-//         }
-//     }
-// }
 
 function showToCards() {
     myLibrary.reverse();
