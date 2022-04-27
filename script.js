@@ -3,12 +3,12 @@ const userBtn = document.getElementById('user');
 let titleInput = document.getElementById('title');
 let authorInput = document.getElementById('author');
 let pagesInput = document.getElementById('pages');
-let checkbox = document.getElementById('read');
-let avail = document.getElementsByName('availability');
+let readCheck = document.getElementById('read');
+let availCheck = document.getElementById('avail');
+const submitButton = document.getElementById('submitButton')
 const cardsContainer = document.querySelector('.cardsContainer');
  
 let myLibrary = [];
-let myCards = [];
 
 //Main Object Constructor 
 function book(title, author, pages, avail, read) {
@@ -38,7 +38,12 @@ function addToLib(...args) {
 }
 
 //submit button actions
-function submitNewBook() {
+document.addEventListener('DOMContentLoaded', function() {
+    submitButton.addEventListener('click', submitNewBook, false);
+}, false)
+
+// submitButton.addEventListener('click', ()=> { console.log('Form Submitted') } )
+function submitNewBook(event) {
     addToLib(titleInput.value, authorInput.value, pagesInput.value, addAvail(), addRead());
     
     //clear the input
@@ -47,19 +52,21 @@ function submitNewBook() {
     pagesInput.value = "";
 
     showToCards()
+    event.preventDefault();
 }
 
 function addAvail() {
-    for (var i = 0, length = avail.length; i < length; i++) {
-        if (avail[i].checked) {
-         return avail[i].value;
-        }
+    if(availCheck.checked) {
+        return true;
+    }
+    else{
+        return false;
     }
 }
 
 //add read with Checkbox
 function addRead() {
-    if(checkbox.checked) {
+    if(readCheck.checked) {
         return true;
     }
     else{
@@ -72,7 +79,6 @@ function showToCards() {
 
     appendToCard();
     myCards.push(myLibrary[0]);
-    // console.table(myLibrary[0]);
     myLibrary.reverse();
 }
 

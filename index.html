@@ -30,18 +30,18 @@
             <div class="formsCaption">
                 <h3>Add New Books to Library</h3>
             </div>
-                <form action="#"> 
+            <form action="#"> 
                     <div class="formTitle">
                         <label for="title"> Title :  </label>
-                        <input type="text" name="title" id="title" >
+                        <input type="text" name="title" id="title" placeholder="Book's Title" minlength="1" maxlength="20" >
                     </div>  
                     <div class="formAuthor">
                         <label for="author"> Author: </label>
-                        <input type="text" name="author" id="author">
+                        <input type="text" name="author" id="author" placeholder="Author's Name" minlength="1" maxlength="20">
                     </div>
                     <div class="formPages">
                         <label for="pages"> Pages:  </label>
-                        <input type="text" name="pages" id="pages">    
+                        <input type='number' name="pages" id="pages" placeholder="Insert Numeric Only">    
                     </div>
                     <div class="formRead">
                         <label for="read"> Did you read it yet?  </label>
@@ -50,15 +50,14 @@
                     </div>  
                     <div class="formAvail">
                         <label for="author"> Is it Available?  </label>
-                        <input type="radio" for="avail" value="available" name="availability" checked>
-                        <label for="avail"> Yes </label>
-                        <input type="radio" for="avail" value="not available" name="availability">
-                        <label for="avail"> No </label>    
+                        <input type="checkbox" for="avail" value=true name="availability" id="avail">
+                        <label for="avail"> Available </label>
                     </div>
                     <div class="buttonSubmit">
-                        <input type="button" id="submitButton" onclick="submitNewBook()" value="Submit"> 
+                        <input type="button" id="submitButton" value="Submit" > 
+                        <!-- <button type="submit" id="submitButton"> Submit </button> -->
                     </div>
-                </form>
+            </form>
         </div>
     </div>
     <div class="footer"> <p>This is the footer</p> </div>    
