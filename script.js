@@ -83,7 +83,30 @@ function showToCards() {
 
 function appendToCard(){
     let div = document.createElement('div');
+    let title = document.createElement('p');
+    let author = document.createElement('p');
+    let pages = document.createElement('p');
+    let ava = document.createElement('p');
+    let read = document.createElement('p');
+
     div.className = "cards";
-    div.append(myLibrary[0].title);
+    div.append(title, author, pages, ava, read);
+    title.append("Title: ", myLibrary[0].title);
+    author.append("Author: ", myLibrary[0].author);
+    pages.append('Pages: ', myLibrary[0].pages)
     cardsContainer.append(div);
+
+    if (myLibrary[0].avail == true) {
+        ava.append("This book Is Available");
+    }
+    else {
+        ava.append("This book is unavailable");    
+    }
+
+    if (myLibrary[0].read == true) {
+        read.append("Already Read");
+    }
+    else {
+        read.append("Haven't Read");
+    }    
 }
