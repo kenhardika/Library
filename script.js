@@ -5,7 +5,8 @@ let authorInput = document.getElementById('author');
 let pagesInput = document.getElementById('pages');
 let readCheck = document.getElementById('read');
 let availCheck = document.getElementById('avail');
-const submitButton = document.getElementById('submitButton')
+
+const submitButton = document.getElementById('submitButton');
 const cardsContainer = document.querySelector('.cardsContainer');
  
 let myLibrary = [];
@@ -38,21 +39,19 @@ function addToLib(...args) {
 }
 
 //submit button actions
-document.addEventListener('DOMContentLoaded', function() {
-    submitButton.addEventListener('click', submitNewBook, false);
-}, false)
-
-// submitButton.addEventListener('click', ()=> { console.log('Form Submitted') } )
+document.addEventListener('submit', submitNewBook);
 function submitNewBook(event) {
-    addToLib(titleInput.value, authorInput.value, pagesInput.value, addAvail(), addRead());
-    
+    event.preventDefault();
+    const formInput = document.querySelectorAll('.form input');
+    addToLib(formInput[0].value, formInput[1].value, formInput[2].value, addAvail(), addRead());
+    //addToLib(titleInput.value, authorInput.value, pagesInput.value, addAvail(), addRead());
+
     //clear the input
-    titleInput.value = "";
-    authorInput.value = "";
-    pagesInput.value = "";
+     titleInput.value = "";
+     authorInput.value = "";
+     pagesInput.value = "";
 
     showToCards()
-    event.preventDefault();
 }
 
 function addAvail() {
@@ -78,7 +77,7 @@ function showToCards() {
     myLibrary.reverse();
 
     appendToCard();
-    myCards.push(myLibrary[0]);
+  //  myCards.push(myLibrary[0]);
     myLibrary.reverse();
 }
 

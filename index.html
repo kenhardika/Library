@@ -30,22 +30,22 @@
             <div class="formsCaption">
                 <h3>Add New Books to Library</h3>
             </div>
-            <form action="#"> 
+            <form action="#" class="form"> 
                     <div class="formTitle">
                         <label for="title"> Title :  </label>
-                        <input type="text" name="title" id="title" placeholder="Book's Title" minlength="1" maxlength="20" >
+                        <input type="text" name="title" id="title" placeholder="Book's Title" maxlength="20" required>
                     </div>  
                     <div class="formAuthor">
                         <label for="author"> Author: </label>
-                        <input type="text" name="author" id="author" placeholder="Author's Name" minlength="1" maxlength="20">
+                        <input type="text" name="author" id="author" placeholder="Author's Name" maxlength="20" required>
                     </div>
                     <div class="formPages">
                         <label for="pages"> Pages:  </label>
-                        <input type='number' name="pages" id="pages" placeholder="Insert Numeric Only">    
+                        <input type='number' name="pages" id="pages" placeholder="Insert Numeric Only" required>    
                     </div>
                     <div class="formRead">
                         <label for="read"> Did you read it yet?  </label>
-                        <input type="checkbox" for="read" value = true id="read">
+                        <input type="checkbox" name="read" for="read" value = true id="read">
                         <label for="read"> Already read </label>
                     </div>  
                     <div class="formAvail">
@@ -54,8 +54,8 @@
                         <label for="avail"> Available </label>
                     </div>
                     <div class="buttonSubmit">
-                        <input type="button" id="submitButton" value="Submit" > 
-                        <!-- <button type="submit" id="submitButton"> Submit </button> -->
+                        <!-- <input type="submit" id="submitButton" value="Submit" >  -->
+                        <button id="submitButton" type="submit"> Submit </button>
                     </div>
             </form>
         </div>
