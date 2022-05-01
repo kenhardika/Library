@@ -29,7 +29,7 @@ input::-webkit-inner-spin-button {
     grid-column: 1/6;
     grid-row: 2/4;
     display: grid;
-    grid-template-columns: repeat(2, 50vw); 
+    grid-template-columns: 60vw 40vw; 
 }
 
 .leftContent, .rightContent {
@@ -45,8 +45,7 @@ input::-webkit-inner-spin-button {
 
 .cardsContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(8vw, 10vw));
-    grid-auto-rows: 20vh;
+    grid-template-columns: repeat(auto-fit, minmax(10vw, 17vw));
     align-items: center;
     justify-content: flex-start;
     gap: 15px;
@@ -54,9 +53,34 @@ input::-webkit-inner-spin-button {
 }
 
 .cards{
-    height: 20vh;
+    border-radius: 20px;
+
+    display: grid;
+    grid-template-rows: repeat(4, 4vh);
+    grid-template-columns: repeat(2, 8vw);
+    justify-content: center;
+    align-items: center;
+    height: 16vh;
     background-color: wheat ;
-} 
+    padding: 10px;
+}
+
+.titleCaption, .authorCaption, .pagesCaption {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.availableButton, .readButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cards button {
+    width: 80px;
+}
+
 
 form {
     display: grid;

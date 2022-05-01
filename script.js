@@ -83,30 +83,57 @@ function showToCards() {
 
 function appendToCard(){
     let div = document.createElement('div');
-    let title = document.createElement('p');
-    let author = document.createElement('p');
-    let pages = document.createElement('p');
-    let ava = document.createElement('p');
-    let read = document.createElement('p');
+    div.className='cards';
 
-    div.className = "cards";
-    div.append(title, author, pages, ava, read);
-    title.append("Title: ", myLibrary[0].title);
-    author.append("Author: ", myLibrary[0].author);
-    pages.append('Pages: ', myLibrary[0].pages)
-    cardsContainer.append(div);
+    let titleCaption = document.createElement('div');
+    titleCaption.className = "titleCaption";
+    titleCaption.append("Title  :");
 
+    let title = document.createElement('div');
+    title.className = 'titleCards';
+    title.append(myLibrary[0].title);
+    
+    let authorCaption = document.createElement('div');
+    authorCaption.className = 'authorCaption';
+    authorCaption.append("Author    :")
+
+    let author = document.createElement('div');
+    author.className='authorCards';
+    author.append(myLibrary[0].author);
+
+    let pagesCaption = document.createElement('div');
+    pagesCaption.className="pagesCaption";
+    pagesCaption.append('Pages  :');
+
+    let pages = document.createElement('div');
+    pages.className="pagesCards";
+    pages.append(myLibrary[0].pages);
+
+    let availButt = document.createElement('div');
+    let ava = document.createElement('button');
+    ava.id = "availButton";
+    availButt.className = "availableButton";
     if (myLibrary[0].avail == true) {
-        ava.append("This book Is Available");
+        ava.append("Available");
+        availButt.append(ava);
     }
     else {
-        ava.append("This book is unavailable");    
+        ava.append("Unavailable");    
+        availButt.append(ava);
     }
-
+    
+    let readButt = document.createElement('div');
+    let read = document.createElement('button');
+    read.id = 'readButton';
+    readButt.className = "readButton";
     if (myLibrary[0].read == true) {
-        read.append("Already Read");
+        read.append("Read");
+        readButt.append(read);
     }
     else {
-        read.append("Haven't Read");
+        read.append("Not Read");
+        readButt.append(read);
     }    
+    div.append(titleCaption, title, authorCaption, author, pagesCaption, pages, availButt, readButt);
+    cardsContainer.append(div);
 }
