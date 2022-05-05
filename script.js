@@ -82,6 +82,8 @@ function showToCards() {
 }
 
 function appendToCard(){
+    
+    //Create Elements for Cards
     let div = document.createElement('div');
     div.className='cards';
 
@@ -110,29 +112,65 @@ function appendToCard(){
     pages.append(myLibrary[0].pages);
 
     let availButt = document.createElement('div');
-    let ava = document.createElement('button');
+    let ava = document.createElement('input');
+    let labAva = document.createElement('label');
+    let labSlider = document.createElement('label');
+    let slider = document.createElement('span');
+    ava.type ="checkbox";
     ava.id = "availButton";
     availButt.className = "availableButton";
+    labAva.className= "labelAvail";
+    labSlider.className = 'switchAvail';
+    slider.className= "slider round";
+    
+    
+    
+    //checks the checkboxes from the input forms 
+
     if (myLibrary[0].avail == true) {
-        ava.append("Available");
-        availButt.append(ava);
+        labAva.textContent = "Available";
+        ava.checked = "checked";
+        labSlider.append(ava);
+        labSlider.append(slider);
+        availButt.append(labAva);
+        availButt.append(labSlider);
     }
     else {
-        ava.append("Unavailable");    
-        availButt.append(ava);
+        labAva.textContent = "Unvailable";
+        ava.checked = null;
+        labSlider.append(ava);
+        labSlider.append(slider);
+        availButt.append(labAva);
+        availButt.append(labSlider);
     }
     
     let readButt = document.createElement('div');
-    let read = document.createElement('button');
+    let read = document.createElement('input');
+    let labRead = document.createElement('label');
+    let labelSlider = document.createElement('label');
+    let sliderRead = document.createElement('span');
+    read.type ="checkbox";
     read.id = 'readButton';
     readButt.className = "readButton";
+    labRead.className = 'labelRead';
+    labelSlider.className = 'switchRead';
+    sliderRead.className= "sliderRead round";
+
     if (myLibrary[0].read == true) {
-        read.append("Read");
-        readButt.append(read);
+        labRead.textContent = "Read";
+        read.checked = "checked";
+        labelSlider.append(read);
+        labelSlider.append(sliderRead);
+        readButt.append(labRead);
+        readButt.append(labelSlider);
     }
     else {
-        read.append("Not Read");
-        readButt.append(read);
+        labRead.textContent = "Not Read";
+        read.checked = null;
+        labelSlider.append(read);
+        labelSlider.append(sliderRead);
+        readButt.append(labRead);
+        readButt.append(labelSlider);
     }    
     div.append(titleCaption, title, authorCaption, author, pagesCaption, pages, availButt, readButt);
     cardsContainer.append(div);
