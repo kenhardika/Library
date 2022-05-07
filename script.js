@@ -119,7 +119,7 @@ function appendToCard(){
     ava.type ="checkbox";
     ava.id = "availButton";
     availButt.className = "availableButton";
-    labAva.className= "labelAvail";
+    labAva.className= "label";
     labSlider.className = 'switchAvail';
     slider.className= "slider round";
     
@@ -152,7 +152,7 @@ function appendToCard(){
     read.type ="checkbox";
     read.id = 'readButton';
     readButt.className = "readButton";
-    labRead.className = 'labelRead';
+    labRead.className = 'label';
     labelSlider.className = 'switchRead';
     sliderRead.className= "sliderRead round";
 
@@ -180,7 +180,9 @@ function appendToCard(){
 function DEFAULT_STATE() {
 
     let toggleAll = cardsContainer.querySelectorAll('input');
+    let labelAll = cardsContainer.querySelectorAll('.label');
     for(let i = 0 ; i < toggleAll.length; i++) {
-        toggleAll[i].addEventListener('click', ()=>{ console.log('Toggle Number-' + i)})
+        toggleAll[i].addEventListener('click', ()=>{ console.log('Toggle Number-' + i + " " + labelAll[i].textContent + " should be changed")});
+        
     }
 }
