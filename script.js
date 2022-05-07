@@ -174,4 +174,13 @@ function appendToCard(){
     }    
     div.append(titleCaption, title, authorCaption, author, pagesCaption, pages, availButt, readButt);
     cardsContainer.append(div);
+    DEFAULT_STATE();
+}
+
+function DEFAULT_STATE() {
+
+    let toggleAll = cardsContainer.querySelectorAll('input');
+    for(let i = 0 ; i < toggleAll.length; i++) {
+        toggleAll[i].addEventListener('click', ()=>{ console.log('Toggle Number-' + i)})
+    }
 }
