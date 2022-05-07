@@ -136,7 +136,7 @@ function appendToCard(){
         availButt.append(labSlider);
     }
     else {
-        labAva.textContent = "Unvailable";
+        labAva.textContent = "Unavailable";
         ava.checked = null;
         labSlider.append(ava);
         labSlider.append(slider);
@@ -180,9 +180,29 @@ function appendToCard(){
 function DEFAULT_STATE() {
 
     let toggleAll = cardsContainer.querySelectorAll('input');
-    let labelAll = cardsContainer.querySelectorAll('.label');
+    
     for(let i = 0 ; i < toggleAll.length; i++) {
-        toggleAll[i].addEventListener('click', ()=>{ console.log('Toggle Number-' + i + " " + labelAll[i].textContent + " should be changed")});
-        
+        toggleAll[i].addEventListener('click',() => changeState(i) ); 
+
+function changeState(i) {
+    
+    console.log('changeState-' + i); // why this loop twice after new cards is on the layout?
+    let labelAll = cardsContainer.querySelectorAll('.label');
+    
+    switch (labelAll[i].textContent) {
+        case "Available": 
+            labelAll[i].textContent = "Unavailable";
+            break;
+        case "Unavailable":
+            labelAll[i].textContent = "Available";
+            break;
+        case "Read":
+            labelAll[i].textContent = "Not Read";
+            break;
+        case "Not Read":
+            labelAll[i].textContent = "Read";
+            break;
+        default:
+        break;
     }
 }
