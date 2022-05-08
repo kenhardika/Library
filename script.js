@@ -178,31 +178,34 @@ function appendToCard(){
 }
 
 function DEFAULT_STATE() {
-
+    console.log('entering default state');
     let toggleAll = cardsContainer.querySelectorAll('input');
     
     for(let i = 0 ; i < toggleAll.length; i++) {
-        toggleAll[i].addEventListener('click',() => changeState(i) ); 
+        toggleAll[i].addEventListener('click', changeState, false);
+    } 
+} 
 
-function changeState(i) {
+function changeState() {
+    console.log('changeState-mode'); // [skipped look for workaround] why this loop twice after new cards is on the layout?
     
-    console.log('changeState-' + i); // why this loop twice after new cards is on the layout?
-    let labelAll = cardsContainer.querySelectorAll('.label');
+    //let labelAll = cardsContainer.querySelectorAll('.label');
     
-    switch (labelAll[i].textContent) {
-        case "Available": 
-            labelAll[i].textContent = "Unavailable";
-            break;
-        case "Unavailable":
-            labelAll[i].textContent = "Available";
-            break;
-        case "Read":
-            labelAll[i].textContent = "Not Read";
-            break;
-        case "Not Read":
-            labelAll[i].textContent = "Read";
-            break;
-        default:
-        break;
-    }
+    // switch (labelAll[i].textContent) {
+    //     case "Available": 
+    //         labelAll[i].textContent = "Unavailable";
+    //         break;
+    //     case "Unavailable":
+    //         labelAll[i].textContent = "Available";
+    //         break;
+    //     case "Read":
+    //         labelAll[i].textContent = "Not Read";
+    //         break;
+    //     case "Not Read":
+    //         labelAll[i].textContent = "Read";
+    //         break;
+    //     default:
+    //     break;
+    // }
+    // return
 }

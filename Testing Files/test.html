@@ -16,13 +16,45 @@
 
     <input type="submit" name="submit" id="submit" value="submit">
     </form>
+    <div class="area">
+    <button class="button"> BuTTON </button>
+    </div>
 </body>
 
 <script>
+
+    const button = document.querySelector('button');
+    const area = document.querySelector('.area'); 
     let form = document.querySelector('form');
     let input = document.getElementById('yourName');
 
     
+    button.addEventListener('click', defautState );
+
+    function defautState() {
+        console.log("DEFAULT STATE");
+
+        let div = document.createElement('div');
+        let addButton = document.createElement('button');   
+        addButton.className='buttonNew';
+        addButton.textContent = 'NEW Button';
+        area.append(addButton);
+
+        secondState();
+    }
+
+    function secondState() {
+        console.log('Second State Accesed');
+        let buttonNew = area.querySelectorAll('.buttonNew');
+        for (i=0; i<buttonNew.length; i++) {
+            console.log('Check button-'+i);
+            buttonNew[i].addEventListener('click', changeState);
+        }
+    }
+
+    function changeState() {
+        console.log("New Button num-" + " Clicked!");
+    }
 
 </script>
 
