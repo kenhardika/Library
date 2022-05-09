@@ -21,13 +21,20 @@ function book(title, author, pages, avail, read) {
  };
 
 //Add Read status in prototype for every book thats been added
- addBookToLibrary.prototype.read = function() {
+ addBookToLibrary.prototype.isRead = function() {
      this.read = true;
  }
  addBookToLibrary.prototype.notRead = function() {
     this.read = false;
  }
-
+ //Add available status in prototype for every book thats available
+ addBookToLibrary.prototype.isAvail = function() {
+     this.avail = true;
+ }
+ addBookToLibrary.prototype.notAvail = function() {
+    this.avail = false;
+ }
+ 
 //Use book obj constructor for Add New Book
 function addBookToLibrary(...args) {
     book.apply(this, args);
@@ -38,11 +45,11 @@ function addToLib(...args) {
     myLibrary.push(new addBookToLibrary(...args));
 }
 
-//modal btn action
-
+//modal btn action, open and close the popup modal
 const addBookBtn = document.querySelector("#openModalBtn");
 const overlayContent = document.querySelector('.overlayContent');
 const closeModalBtn = document.querySelector("#closeModalBtn");
+
 addBookBtn.addEventListener('click', ()=> { overlayContent.style.display = 'block'; });
 closeModalBtn.addEventListener('click', closeModalAddBook);
 
@@ -56,8 +63,7 @@ function submitNewBook(event) {
     event.preventDefault();
     const formInput = document.querySelectorAll('.form input');
     addToLib(formInput[0].value, formInput[1].value, formInput[2].value, addAvail(), addRead());
-    //addToLib(titleInput.value, authorInput.value, pagesInput.value, addAvail(), addRead());
-
+ 
     //clear the input
      titleInput.value = "";
      authorInput.value = "";
@@ -85,15 +91,39 @@ function addRead() {
     }
 }
 
-function showToCards() {
-    myLibrary.reverse();
+//Editing this part Show to Cards
+// heres the default
+// function showToCards() {
+//     myLibrary.reverse();
 
-    appendToCard();
-  //  myCards.push(myLibrary[0]);
-    myLibrary.reverse();
+//     appendToCard();
+//   //  myCards.push(myLibrary[0]);
+//     myLibrary.reverse();
+// }
+
+
+//new way to show Cards, no more reverse the library
+function showToCards() {
+    resetInputBook();
+    for (let book of myLibrary) {
+    appendToCard(book);
+    }
+}
+//reset the container, so the old data's gone
+const resetInputBook = () => {
+    cardsContainer.innerHTML='';
 }
 
-function appendToCard(){
+//check for of to myLibrary
+// function checkLibrary() {
+//     for (let book of myLibrary) {
+//         console.log(book);
+//         console.log(typeof(book));
+//     }
+// }
+
+
+function appendToCard(book){
     
     //Create Elements for Cards
     let div = document.createElement('div');
@@ -105,7 +135,7 @@ function appendToCard(){
 
     let title = document.createElement('div');
     title.className = 'titleCards';
-    title.append(myLibrary[0].title);
+    title.append(book.title);
     
     let authorCaption = document.createElement('div');
     authorCaption.className = 'authorCaption';
@@ -113,7 +143,7 @@ function appendToCard(){
 
     let author = document.createElement('div');
     author.className='authorCards';
-    author.append(myLibrary[0].author);
+    author.append(book.author);
 
     let pagesCaption = document.createElement('div');
     pagesCaption.className="pagesCaption";
@@ -121,7 +151,7 @@ function appendToCard(){
 
     let pages = document.createElement('div');
     pages.className="pagesCards";
-    pages.append(myLibrary[0].pages);
+    pages.append(book.pages);
 
     let availButt = document.createElement('div');
     let ava = document.createElement('input');
@@ -139,7 +169,7 @@ function appendToCard(){
     
     //checks the checkboxes from the input forms 
 
-    if (myLibrary[0].avail == true) {
+    if (book.avail == true) {
         labAva.textContent = "Available";
         ava.checked = "checked";
         labSlider.append(ava);
@@ -168,7 +198,7 @@ function appendToCard(){
     labelSlider.className = 'switchRead';
     sliderRead.className= "sliderRead round";
 
-    if (myLibrary[0].read == true) {
+    if (book.read == true) {
         labRead.textContent = "Read";
         read.checked = "checked";
         labelSlider.append(read);
@@ -192,33 +222,30 @@ function appendToCard(){
 
 function DEFAULT_STATE() {
     console.log('entering default state');
-    let toggleAll = cardsContainer.querySelectorAll('input');
-    let labelAll = cardsContainer.querySelectorAll('.label'); 
+    let toggleAll = cardsContainer.querySelectorAll('input'); 
     for(let i = 0 ; i < toggleAll.length; i++) {
-        toggleAll[i].addEventListener('click', changeState, false);
+        toggleAll[i].addEventListener('click', () => changeState(i), false);
     } 
 } 
 
-let changeState = function() {
+function changeState(i) {
+    let labelAll = cardsContainer.querySelectorAll('.label');
     console.log('changeState-mode'); // [skipped look for workaround] why this loop twice after new cards is on the layout?
-    
-    
-    
-    // switch (labelAll[i].textContent) {
-    //     case "Available": 
-    //         labelAll[i].textContent = "Unavailable";
-    //         break;
-    //     case "Unavailable":
-    //         labelAll[i].textContent = "Available";
-    //         break;
-    //     case "Read":
-    //         labelAll[i].textContent = "Not Read";
-    //         break;
-    //     case "Not Read":
-    //         labelAll[i].textContent = "Read";
-    //         break;
-    //     default:
-    //     break;
-    // }
-    // return
+    switch (labelAll[i].textContent) {
+        case "Available": 
+            labelAll[i].textContent = "Unavailable";
+            break;
+        case "Unavailable":
+            labelAll[i].textContent = "Available";
+            break;
+        case "Read":
+            labelAll[i].textContent = "Not Read";
+            break;
+        case "Not Read":
+            labelAll[i].textContent = "Read";
+            break;
+        default:
+        break;
+    }
+    return
 }
