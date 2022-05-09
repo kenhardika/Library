@@ -38,6 +38,18 @@ function addToLib(...args) {
     myLibrary.push(new addBookToLibrary(...args));
 }
 
+//modal btn action
+
+const addBookBtn = document.querySelector("#openModalBtn");
+const overlayContent = document.querySelector('.overlayContent');
+const closeModalBtn = document.querySelector("#closeModalBtn");
+addBookBtn.addEventListener('click', ()=> { overlayContent.style.display = 'block'; });
+closeModalBtn.addEventListener('click', closeModalAddBook);
+
+function closeModalAddBook() {
+    overlayContent.style.display = 'none';
+}
+
 //submit button actions
 document.addEventListener('submit', submitNewBook);
 function submitNewBook(event) {
@@ -175,21 +187,22 @@ function appendToCard(){
     div.append(titleCaption, title, authorCaption, author, pagesCaption, pages, availButt, readButt);
     cardsContainer.append(div);
     DEFAULT_STATE();
+    closeModalAddBook();
 }
 
 function DEFAULT_STATE() {
     console.log('entering default state');
     let toggleAll = cardsContainer.querySelectorAll('input');
-    
+    let labelAll = cardsContainer.querySelectorAll('.label'); 
     for(let i = 0 ; i < toggleAll.length; i++) {
         toggleAll[i].addEventListener('click', changeState, false);
     } 
 } 
 
-function changeState() {
+let changeState = function() {
     console.log('changeState-mode'); // [skipped look for workaround] why this loop twice after new cards is on the layout?
     
-    //let labelAll = cardsContainer.querySelectorAll('.label');
+    
     
     // switch (labelAll[i].textContent) {
     //     case "Available": 

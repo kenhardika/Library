@@ -42,14 +42,68 @@ h1 {
     grid-column: 1/6;
     grid-row: 2/4;
     display: grid;
-    grid-template-columns: 60vw 40vw;
+    grid-template-columns: 100vw;
     background-color: #FFFBF5;
 }
 
-.leftContent, .rightContent {
+.mainContent{
     display: flex;
     flex-direction: column;
     padding-top: 20px;
+}
+
+.newBookBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5vh;
+}
+
+.overlayContent {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.291);
+}
+
+.modalContent {
+    max-width: 600px;
+    height: 280px;
+    background-color: #f8f5ee;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    border-radius: 10px;
+}
+
+.buttonClose {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px 10px 0 0;
+}
+#closeModalBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+#closeModalBtn:hover {
+
+}
+
+#closeModalBtn:active {
+    transform: translateY(2px);
 }
 
 .cardsCaption, .formsCaption {
