@@ -222,30 +222,34 @@ function appendToCard(book){
 
 function DEFAULT_STATE() {
     console.log('entering default state');
-    let toggleAll = cardsContainer.querySelectorAll('input'); 
-    for(let i = 0 ; i < toggleAll.length; i++) {
-        toggleAll[i].addEventListener('click', () => changeState(i), false);
+    const toggleAll = cardsContainer.querySelectorAll('input'); 
+    for(let toggle of toggleAll) {
+        toggle.addEventListener('click', changeState, false);
     } 
 } 
 
-function changeState(i) {
-    let labelAll = cardsContainer.querySelectorAll('.label');
-    console.log('changeState-mode'); // [skipped look for workaround] why this loop twice after new cards is on the layout?
-    switch (labelAll[i].textContent) {
+//finally worked, blessed the event target lmaooo
+const changeState = (e) => {
+    //let labelAll = cardsContainer.querySelectorAll('.label');
+    console.log('changeState-mode- '); // [skipped look for workaround] why this loop twice after new cards is on the layout? IT WORKED 
+    // console.log(e);
+    console.log(e.target.labels[0].parentNode.firstChild.textContent);
+    switch (e.target.labels[0].parentNode.firstChild.textContent) {
         case "Available": 
-            labelAll[i].textContent = "Unavailable";
+            e.target.labels[0].parentNode.firstChild.textContent = "Unavailable";
             break;
         case "Unavailable":
-            labelAll[i].textContent = "Available";
+            e.target.labels[0].parentNode.firstChild.textContent = "Available";
             break;
         case "Read":
-            labelAll[i].textContent = "Not Read";
+            e.target.labels[0].parentNode.firstChild.textContent = "Not Read";
             break;
         case "Not Read":
-            labelAll[i].textContent = "Read";
+            e.target.labels[0].parentNode.firstChild.textContent = "Read";
             break;
         default:
         break;
     }
     return
 }
+
