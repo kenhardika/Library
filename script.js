@@ -287,16 +287,15 @@ const deleteState = (e) => {
     const titleCard = e.target.parentNode.parentNode.childNodes[1].textContent;
     //console.log(titleCard);
     cardsContainer.removeChild(e.target.parentNode.parentNode); // this worked well to remove the cards, clean.
-    
-    myLibrary.forEach( (lib) => {
-        if (lib.title == titleCard) {
-            console.log(lib.title + ' will be removed');
-            
-            lib.title !=titleCard;
-            //var filtered = someArray.filter(function(el) { return el.Name != "Kristian"; }); will delete kristian name, use this  
-            // lib.filter( (elm) => { return elm.title !=titleCard; } ); 
-        } 
-    });
+    myLibrary = myLibrary.filter(function (lib) { return lib.title !=titleCard; }); //this works well too. Goal achieved    
+    // myLibrary.forEach( (lib) => {
+    //     if (lib.title == titleCard) {
+    //         console.log(lib.title + ' will be removed');
+    //         lib.title !=titleCard; 
+    //     } 
+    // });
+    //var filtered = someArray.filter(function(el) { return el.Name != "Kristian"; }); will delete kristian name, use this  
+    // lib.filter( (elm) => { return elm.title !=titleCard; } );
     console.log(myLibrary);
     //console.log(e.target.parentNode.parentNode.className)
     //e.target.parentNode.parentNode.innerHTML=""; 
