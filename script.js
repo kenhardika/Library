@@ -230,7 +230,15 @@ function appendToCard(book){
 
 function DEFAULT_STATE() {
     console.log('entering standby toglle state');
-    const toggleAll = cardsContainer.querySelectorAll('input'); 
+    const toggleAll = cardsContainer.querySelectorAll('input');
+    const deleteBtnAll = cardsContainer.querySelectorAll('#deleteBtn');
+    
+    for (let delBtn of deleteBtnAll) {
+        delBtn.addEventListener('click', deleteState, false);
+    }
+    
+    //(e)=> console.log('Delete Btn-'+ e.target.parentNode.parentNode.childNodes[1].textContent)
+
     for(let toggle of toggleAll) {
         toggle.addEventListener('click', changeState, false);
     } 
@@ -274,3 +282,25 @@ const changeState = (e) => {
     return
 }
 
+const deleteState = (e) => {
+    //console.log(e.target.parentNode.parentNode.innerHTML);
+    const titleCard = e.target.parentNode.parentNode.childNodes[1].textContent;
+    //console.log(titleCard);
+    cardsContainer.removeChild(e.target.parentNode.parentNode); // this worked well to remove the cards, clean.
+    
+    myLibrary.forEach( (lib) => {
+        if (lib.title == titleCard) {
+            console.log(lib.title + ' will be removed');
+            
+            lib.title !=titleCard;
+            //var filtered = someArray.filter(function(el) { return el.Name != "Kristian"; }); will delete kristian name, use this  
+            // lib.filter( (elm) => { return elm.title !=titleCard; } ); 
+        } 
+    });
+    console.log(myLibrary);
+    //console.log(e.target.parentNode.parentNode.className)
+    //e.target.parentNode.parentNode.innerHTML=""; 
+    
+
+    //console.log(e.target.parentNode.parentNode.childNodes[1].textContent + " will be deleted");
+}
