@@ -127,43 +127,43 @@ function appendToCard(book){
     
     //Create Elements for Cards
     let div = document.createElement('div');
-    div.className='cards';
+        div.className='cards';
 
     let titleCaption = document.createElement('div');
-    titleCaption.className = "titleCaption";
-    titleCaption.append("Title  :");
+        titleCaption.className = "titleCaption";
+        titleCaption.append("Title  :");
 
     let title = document.createElement('div');
-    title.className = 'titleCards';
-    title.append(book.title);
+        title.className = 'titleCards';
+        title.append(book.title);
     
     let authorCaption = document.createElement('div');
-    authorCaption.className = 'authorCaption';
-    authorCaption.append("Author    :")
+        authorCaption.className = 'authorCaption';
+        authorCaption.append("Author    :")
 
     let author = document.createElement('div');
-    author.className='authorCards';
-    author.append(book.author);
+        author.className='authorCards';
+        author.append(book.author);
 
     let pagesCaption = document.createElement('div');
-    pagesCaption.className="pagesCaption";
-    pagesCaption.append('Pages  :');
+        pagesCaption.className="pagesCaption";
+        pagesCaption.append('Pages  :');
 
     let pages = document.createElement('div');
-    pages.className="pagesCards";
-    pages.append(book.pages);
+        pages.className="pagesCards";
+        pages.append(book.pages);
 
     let availButt = document.createElement('div');
     let ava = document.createElement('input');
     let labAva = document.createElement('label');
     let labSlider = document.createElement('label');
     let slider = document.createElement('span');
-    ava.type ="checkbox";
-    ava.id = "availButton";
-    availButt.className = "availableButton";
-    labAva.className= "label";
-    labSlider.className = 'switchAvail';
-    slider.className= "slider round";
+        ava.type ="checkbox";
+        ava.id = "availButton";
+        availButt.className = "availableButton";
+        labAva.className= "label";
+        labSlider.className = 'switchAvail';
+        slider.className= "slider round";
     
     
     
@@ -191,12 +191,12 @@ function appendToCard(book){
     let labRead = document.createElement('label');
     let labelSlider = document.createElement('label');
     let sliderRead = document.createElement('span');
-    read.type ="checkbox";
-    read.id = 'readButton';
-    readButt.className = "readButton";
-    labRead.className = 'label';
-    labelSlider.className = 'switchRead';
-    sliderRead.className= "sliderRead round";
+        read.type ="checkbox";
+        read.id = 'readButton';
+        readButt.className = "readButton";
+        labRead.className = 'label';
+        labelSlider.className = 'switchRead';
+        sliderRead.className= "sliderRead round";
 
     if (book.read == true) {
         labRead.textContent = "Read";
@@ -213,8 +213,16 @@ function appendToCard(book){
         labelSlider.append(sliderRead);
         readButt.append(labRead);
         readButt.append(labelSlider);
-    }    
-    div.append(titleCaption, title, authorCaption, author, pagesCaption, pages, availButt, readButt);
+    }
+    
+    let divdelBtn = document.createElement('div');
+    let deleteBtn = document.createElement('button');
+        divdelBtn.className='divDeleteBtn';
+        deleteBtn.id='deleteBtn';
+        deleteBtn.textContent = 'delete';
+        divdelBtn.appendChild(deleteBtn);
+
+    div.append(titleCaption, title, authorCaption, author, pagesCaption, pages, availButt, readButt, divdelBtn);
     cardsContainer.append(div);
     DEFAULT_STATE();
     closeModalAddBook();
