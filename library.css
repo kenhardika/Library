@@ -108,7 +108,7 @@ h1 {
     grid-template-columns: repeat(auto-fit, minmax(10vw, 17vw));
     height: 60vh;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: center;
     gap: 15px;
     padding: 10px;
 }
@@ -118,11 +118,11 @@ h1 {
     border: solid 1px gray;
 
     display: grid;
-    grid-template-rows: repeat(4, 5vh);
+    grid-template-rows: repeat(4, 6vh);
     grid-template-columns: repeat(2, 8vw);
     justify-content: center;
     align-items: center;
-    height: 20vh;
+    height: 25vh;
     background-color:  #f8f5ee;
     padding: 10px;
     font-size: 20px;

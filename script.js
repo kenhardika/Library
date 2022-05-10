@@ -34,7 +34,7 @@ function book(title, author, pages, avail, read) {
  addBookToLibrary.prototype.notAvail = function() {
     this.avail = false;
  }
- 
+
 //Use book obj constructor for Add New Book
 function addBookToLibrary(...args) {
     book.apply(this, args);
@@ -221,35 +221,48 @@ function appendToCard(book){
 }
 
 function DEFAULT_STATE() {
-    console.log('entering default state');
+    console.log('entering standby toglle state');
     const toggleAll = cardsContainer.querySelectorAll('input'); 
     for(let toggle of toggleAll) {
         toggle.addEventListener('click', changeState, false);
     } 
 } 
 
-//finally worked, blessed the event target lmaooo
+//Change the Label Status toggle and change the library array based on toggle
 const changeState = (e) => {
-    //let labelAll = cardsContainer.querySelectorAll('.label');
-    console.log('changeState-mode- '); // [skipped look for workaround] why this loop twice after new cards is on the layout? IT WORKED 
-    // console.log(e);
-    console.log(e.target.labels[0].parentNode.firstChild.textContent);
-    switch (e.target.labels[0].parentNode.firstChild.textContent) {
-        case "Available": 
-            e.target.labels[0].parentNode.firstChild.textContent = "Unavailable";
-            break;
-        case "Unavailable":
-            e.target.labels[0].parentNode.firstChild.textContent = "Available";
-            break;
-        case "Read":
-            e.target.labels[0].parentNode.firstChild.textContent = "Not Read";
-            break;
-        case "Not Read":
-            e.target.labels[0].parentNode.firstChild.textContent = "Read";
-            break;
-        default:
-        break;
-    }
+
+    const titleCard = e.target.parentNode.parentNode.parentNode.childNodes[1].textContent; 
+    let labelStatus = e.target.labels[0].parentNode.firstChild.textContent;
+    console.log(titleCard);
+
+    myLibrary.forEach((lib) => { 
+        if (lib.title == titleCard) {
+            switch (labelStatus) {
+                case "Available": 
+                    e.target.labels[0].parentNode.firstChild.textContent = "Unavailable";
+                    lib.notAvail();
+                    break;
+                case "Unavailable":
+                    e.target.labels[0].parentNode.firstChild.textContent = "Available";
+                    lib.isAvail();
+                    break;
+                case "Read":
+                    e.target.labels[0].parentNode.firstChild.textContent = "Not Read";
+                    lib.notRead();
+                    break;
+                case "Not Read":
+                    e.target.labels[0].parentNode.firstChild.textContent = "Read";
+                    lib.isRead();
+                    break;
+                default:
+                break;
+            }
+            console.log(lib); 
+            } 
+        else {
+            console.log("nope")
+        }}
+    );
     return
 }
 
