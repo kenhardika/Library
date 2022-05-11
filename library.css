@@ -23,19 +23,20 @@ input::-webkit-inner-spin-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #FFFBF5;
+    background-color: #f1efdb;
 }
 
 h1 {
     display: flex;
-    width: 25vw;
     align-items: center;
     justify-content: center;
-    border-radius: 10px;
+    width: 450px;
     font-family: 'VT323', monospace;
-    background-color: #f8f5ee;
-    color: black;
-    border: solid 1px gray;    
+    background-color: #a09d74;
+    color: #f1efdb;
+    border-radius: 8px;
+    border: 5px solid #d0ceba;
+    text-shadow: 0 0 4px #57562f, 0 0 4px #57562f, 0 0 4px #57562f;
 }
 
 .content {
@@ -50,6 +51,7 @@ h1 {
     display: flex;
     flex-direction: column;
     padding-top: 20px;
+    background-color: #f1efdb;
 }
 
 .newBookBtn {
@@ -100,8 +102,19 @@ h1 {
     font-size: 22px;
     align-items: center;
     justify-content: center;
+    padding: 8px;
 }
 
+.cardsCaption h3 {
+    border: 2px solid rgb(62, 62, 62);
+    border-radius: 5px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    text-shadow:  2px 2px 2px rgb(123, 122, 122);
+}
 
 .cardsContainer {
     display: grid;
@@ -126,6 +139,14 @@ h1 {
     background-color:  #f8f5ee;
     padding: 10px;
     font-size: 20px;
+}
+
+.titleCards, .authorCards, .pagesCards {
+    grid-column: 1/3;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .titleCaption, .authorCaption, .pagesCaption {
@@ -229,14 +250,14 @@ form {
 }
 
 input{
-    font-size: 20px;
+    font-size: 17px;
 }
 
 .formTitle, .formAuthor, .formPages{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 18vw;
+    width: 25vw;
 }
 
 .formRead, .formAvail {
@@ -246,7 +267,7 @@ input{
 }
 
 input#pages, input#author, input#title {
-    width: 10vw;
+    width: 15vw;
 }
 .buttonSubmit {
     display: flex;
@@ -258,5 +279,5 @@ input#pages, input#author, input#title {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #FFFBF5;
+    background-color: #f1efdb;
 }

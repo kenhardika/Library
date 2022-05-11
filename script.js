@@ -129,29 +129,29 @@ function appendToCard(book){
     let div = document.createElement('div');
         div.className='cards';
 
-    let titleCaption = document.createElement('div');
-        titleCaption.className = "titleCaption";
-        titleCaption.append("Title  :");
+    // let titleCaption = document.createElement('div');
+    //     titleCaption.className = "titleCaption";
+    //     titleCaption.append("Title  :");
 
     let title = document.createElement('div');
         title.className = 'titleCards';
         title.append(book.title);
     
-    let authorCaption = document.createElement('div');
-        authorCaption.className = 'authorCaption';
-        authorCaption.append("Author    :")
+    // let authorCaption = document.createElement('div');
+    //     authorCaption.className = 'authorCaption';
+    //     authorCaption.append("Author    :")
 
     let author = document.createElement('div');
         author.className='authorCards';
         author.append(book.author);
 
-    let pagesCaption = document.createElement('div');
-        pagesCaption.className="pagesCaption";
-        pagesCaption.append('Pages  :');
+    // let pagesCaption = document.createElement('div');
+    //     pagesCaption.className="pagesCaption";
+    //     pagesCaption.append('Pages  :');
 
     let pages = document.createElement('div');
         pages.className="pagesCards";
-        pages.append(book.pages);
+        pages.append(parseInt(book.pages));
 
     let availButt = document.createElement('div');
     let ava = document.createElement('input');
@@ -222,7 +222,7 @@ function appendToCard(book){
         deleteBtn.textContent = 'delete';
         divdelBtn.appendChild(deleteBtn);
 
-    div.append(titleCaption, title, authorCaption, author, pagesCaption, pages, availButt, readButt, divdelBtn);
+    div.append(title,author, pages, availButt, readButt, divdelBtn);
     cardsContainer.append(div);
     DEFAULT_STATE();
     closeModalAddBook();
@@ -247,9 +247,10 @@ function DEFAULT_STATE() {
 //Change the Label Status toggle and change the library array based on toggle
 const changeState = (e) => {
 
-    const titleCard = e.target.parentNode.parentNode.parentNode.childNodes[1].textContent; 
+    const titleCard = e.target.parentNode.parentNode.parentNode.childNodes[0].textContent; 
     let labelStatus = e.target.labels[0].parentNode.firstChild.textContent;
     console.log(titleCard);
+    console.log(e);
 
     myLibrary.forEach((lib) => { 
         if (lib.title == titleCard) {
@@ -283,23 +284,8 @@ const changeState = (e) => {
 }
 
 const deleteState = (e) => {
-    //console.log(e.target.parentNode.parentNode.innerHTML);
-    const titleCard = e.target.parentNode.parentNode.childNodes[1].textContent;
-    //console.log(titleCard);
+    const titleCard = e.target.parentNode.parentNode.childNodes[0].textContent;
     cardsContainer.removeChild(e.target.parentNode.parentNode); // this worked well to remove the cards, clean.
     myLibrary = myLibrary.filter(function (lib) { return lib.title !=titleCard; }); //this works well too. Goal achieved    
-    // myLibrary.forEach( (lib) => {
-    //     if (lib.title == titleCard) {
-    //         console.log(lib.title + ' will be removed');
-    //         lib.title !=titleCard; 
-    //     } 
-    // });
-    //var filtered = someArray.filter(function(el) { return el.Name != "Kristian"; }); will delete kristian name, use this  
-    // lib.filter( (elm) => { return elm.title !=titleCard; } );
     console.log(myLibrary);
-    //console.log(e.target.parentNode.parentNode.className)
-    //e.target.parentNode.parentNode.innerHTML=""; 
-    
-
-    //console.log(e.target.parentNode.parentNode.childNodes[1].textContent + " will be deleted");
 }
