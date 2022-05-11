@@ -6,6 +6,7 @@ let pagesInput = document.getElementById('pages');
 let readCheck = document.getElementById('read');
 let availCheck = document.getElementById('avail');
 
+
 const submitButton = document.getElementById('submitButton');
 const cardsContainer = document.querySelector('.cardsContainer');
  
@@ -91,17 +92,6 @@ function addRead() {
     }
 }
 
-//Editing this part Show to Cards
-// heres the default
-// function showToCards() {
-//     myLibrary.reverse();
-
-//     appendToCard();
-//   //  myCards.push(myLibrary[0]);
-//     myLibrary.reverse();
-// }
-
-
 //new way to show Cards, no more reverse the library
 function showToCards() {
     resetInputBook();
@@ -114,40 +104,19 @@ const resetInputBook = () => {
     cardsContainer.innerHTML='';
 }
 
-//check for of to myLibrary
-// function checkLibrary() {
-//     for (let book of myLibrary) {
-//         console.log(book);
-//         console.log(typeof(book));
-//     }
-// }
-
-
 function appendToCard(book){
     
     //Create Elements for Cards
     let div = document.createElement('div');
         div.className='cards';
 
-    // let titleCaption = document.createElement('div');
-    //     titleCaption.className = "titleCaption";
-    //     titleCaption.append("Title  :");
-
     let title = document.createElement('div');
         title.className = 'titleCards';
         title.append(book.title);
-    
-    // let authorCaption = document.createElement('div');
-    //     authorCaption.className = 'authorCaption';
-    //     authorCaption.append("Author    :")
 
     let author = document.createElement('div');
         author.className='authorCards';
         author.append(book.author);
-
-    // let pagesCaption = document.createElement('div');
-    //     pagesCaption.className="pagesCaption";
-    //     pagesCaption.append('Pages  :');
 
     let pages = document.createElement('div');
         pages.className="pagesCards";
@@ -164,8 +133,6 @@ function appendToCard(book){
         labAva.className= "label";
         labSlider.className = 'switchAvail';
         slider.className= "slider round";
-    
-    
     
     //checks the checkboxes from the input forms 
 
@@ -224,9 +191,11 @@ function appendToCard(book){
 
     div.append(title,author, pages, availButt, readButt, divdelBtn);
     cardsContainer.append(div);
+    
     DEFAULT_STATE();
     closeModalAddBook();
 }
+
 
 function DEFAULT_STATE() {
     console.log('entering standby toglle state');
@@ -280,6 +249,7 @@ const changeState = (e) => {
             console.log("nope")
         }}
     );
+    DEFAULT_STATE();
     return
 }
 
@@ -288,4 +258,9 @@ const deleteState = (e) => {
     cardsContainer.removeChild(e.target.parentNode.parentNode); // this worked well to remove the cards, clean.
     myLibrary = myLibrary.filter(function (lib) { return lib.title !=titleCard; }); //this works well too. Goal achieved    
     console.log(myLibrary);
+    DEFAULT_STATE();
+}
+
+window.onload = () => {
+    DEFAULT_STATE();
 }
