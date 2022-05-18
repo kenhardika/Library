@@ -198,7 +198,7 @@ function appendToCard(book){
 
 
 function DEFAULT_STATE() {
-    console.log('entering standby toglle state');
+   // console.log('entering standby toglle state');
     const toggleAll = cardsContainer.querySelectorAll('input');
     const deleteBtnAll = cardsContainer.querySelectorAll('#deleteBtn');
     
@@ -218,8 +218,8 @@ const changeState = (e) => {
 
     const titleCard = e.target.parentNode.parentNode.parentNode.childNodes[0].textContent; 
     let labelStatus = e.target.labels[0].parentNode.firstChild.textContent;
-    console.log(titleCard);
-    console.log(e);
+    //console.log(titleCard);
+    //console.log(e);
 
     myLibrary.forEach((lib) => { 
         if (lib.title == titleCard) {
@@ -257,7 +257,7 @@ const deleteState = (e) => {
     const titleCard = e.target.parentNode.parentNode.childNodes[0].textContent;
     cardsContainer.removeChild(e.target.parentNode.parentNode); // this worked well to remove the cards, clean.
     myLibrary = myLibrary.filter(function (lib) { return lib.title !=titleCard; }); //this works well too. Goal achieved    
-    console.log(myLibrary);
+ //   console.log(myLibrary);
     DEFAULT_STATE();
 }
 

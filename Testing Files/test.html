@@ -18,6 +18,7 @@
     </form>
     <div class="area">
     <button class="button"> BuTTON </button>
+    <button id="jsonBtn"> JSON Button</button>
     </div>
 </body>
 
@@ -28,8 +29,28 @@
     let form = document.querySelector('form');
     let input = document.getElementById('yourName');
 
+    let library = {
+        title: 'Abraham and His Sins',
+        author: 'Lookman January',
+        pages: 29
+    }
     
     button.addEventListener('click', defautState );
+
+
+    if (localStorage.getItem('data') == null) {
+        localStorage.setItem('data', '[]');
+    }
+
+    let old_data = JSON.parse(localStorage.getItem('data'));
+    old_data.push(library);
+
+    document.getElementById('jsonBtn').addEventListener('click', ()=> {console.log('wahaw');
+        localStorage.setItem('data', JSON.stringify(old_data));
+    } );
+
+
+    // localStorage.setItem('data', JSON.stringify(old_data));
 
     function defautState() {
         console.log("DEFAULT STATE");
