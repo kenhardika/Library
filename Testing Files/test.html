@@ -6,76 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Testing forms</title>
     <link rel="stylesheet" href="./style.css">
+    <script src="./test.js"></script>
 </head>
 <body>
     
     <p> Testing the Waters! </p>
-    <form action="">
-    <label for="yourName"> Your Name: </label>
-    <input type="text" name="yourName" id="yourName" pattern="[A-Z]{3,9}" required>
-
-    <input type="submit" name="submit" id="submit" value="submit">
-    </form>
-    <div class="area">
-    <button class="button"> BuTTON </button>
-    <button id="jsonBtn"> JSON Button</button>
-    </div>
+    
 </body>
 
 <script>
 
-    const button = document.querySelector('button');
-    const area = document.querySelector('.area'); 
-    let form = document.querySelector('form');
-    let input = document.getElementById('yourName');
-
-    let library = {
-        title: 'Abraham and His Sins',
-        author: 'Lookman January',
-        pages: 29
-    }
-    
-    button.addEventListener('click', defautState );
-
-
-    if (localStorage.getItem('data') == null) {
-        localStorage.setItem('data', '[]');
-    }
-
-    let old_data = JSON.parse(localStorage.getItem('data'));
-    old_data.push(library);
-
-    document.getElementById('jsonBtn').addEventListener('click', ()=> {console.log('wahaw');
-        localStorage.setItem('data', JSON.stringify(old_data));
-    } );
-
-
-    // localStorage.setItem('data', JSON.stringify(old_data));
-
-    function defautState() {
-        console.log("DEFAULT STATE");
-
-        let div = document.createElement('div');
-        let addButton = document.createElement('button');   
-        addButton.className='buttonNew';
-        addButton.textContent = 'NEW Button';
-        area.append(addButton);
-
-        secondState();
-    }
-
-    function secondState() {
-        console.log('Second State Accesed');
-        let buttonNew = area.querySelectorAll('.buttonNew');
-        for (i=0; i<buttonNew.length; i++) {
-            console.log('Check button-'+i);
-            buttonNew[i].addEventListener('click', changeState);
-        }
-    }
-
-    function changeState() {
-        console.log("New Button num-" + " Clicked!");
-    }
 
 </script>
 
