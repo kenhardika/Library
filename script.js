@@ -12,6 +12,8 @@ const cardsContainer = document.querySelector('.cardsContainer');
  
 let myLibrary = [];
 
+console.log('My Library Revisited')
+
 //Main Object Constructor 
 function book(title, author, pages, avail, read) {
     this.title = title; 
