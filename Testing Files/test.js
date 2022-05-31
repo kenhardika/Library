@@ -19,13 +19,15 @@ class books {
     getPages() {
         return this.pages;
     }
-    getRead() {
-        return this.read;
+    changeRead() {
+        return (this.read == true )? this.read = false : this.read = true;
     }
-    getAvailable(){
-        return this.available;
+    changeAvailable(){
+        return (this.available == true )? this.available = false : this.available = true;
     }
 }
+
+
 
 let libraryArray = [];
 let numberOfBooks = 0;
@@ -33,31 +35,50 @@ let numberOfBooks = 0;
 function getNewBook() {
     let book = new books(prompt('title?'), prompt('Author?'), prompt('Pages?'), true, true);
     libraryArray.push(book);
-    numberOfBooks++;
+    
+    //show to cards
+    addToCard(numberOfBooks);
+
+    //add number of books
+    numberOfBooks++;    
 }
 
 //have to know the array order of book in library, stated as num
 function deleteBook(num) {
+    document.querySelector('.cardsContainer').removeChild(document.querySelector('.cardsContainer').childNodes[num])
     libraryArray.splice(num, 1);
     numberOfBooks--;
 }
 
 //change read, have to know books order in library
-function changeRead(num) {
-    if (libraryArray[num].read == true) {
-        libraryArray[num].read = false 
-        }
-    else {
-        libraryArray[num].read = true
-    } 
-}
+// function changeRead(num) {
+//     if (libraryArray[num].read == true) {
+//         libraryArray[num].read = false 
+//         }
+//     else {
+//         libraryArray[num].read = true
+//     } 
+// }
 
 //change available, have to know books order in library
-function changeAvail(num) {
-    if (libraryArray[num].available == true) {
-        libraryArray[num].available = false 
-        }
-    else {
-        libraryArray[num].available = true
-    } 
+// function changeAvail(num) {
+//     if (libraryArray[num].available == true) {
+//         libraryArray[num].available = false 
+//         }
+//     else {
+//         libraryArray[num].available = true
+//     } 
+// }
+
+//show to cards display inside DOM 
+function addToCard(num) {
+    const cardsContainer = document.querySelector('.cardsContainer');
+    const divs = document.createElement('div');
+    const para = document.createElement('p');
+
+    divs.className='card';
+    para.textContent = `Title: ${libraryArray[num].title}`
+
+    divs.appendChild(para);
+    cardsContainer.append(divs);
 }
