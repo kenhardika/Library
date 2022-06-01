@@ -3,7 +3,7 @@
 
 //how is it like to be a book.
 class books {
-    constructor( title, author, pages, read, available ) {
+    constructor( title = "Unavailable", author = "Unknown", pages = null, read = null, available = null ) {
         this.title = title;
         this.author = author;
         this.pages = pages;
@@ -28,6 +28,15 @@ class books {
 }
 
 
+class library {
+    constructor(){
+        this.book = [];
+    }
+    pushToLibrary() {
+        
+    }
+
+}
 
 let libraryArray = [];
 let numberOfBooks = 0;
